@@ -44,9 +44,9 @@ def filter_numbers(input_list, param):
     >>> filter_numbers([2, 3, 4, 5], EVEN)
     <<< [2, 4]
     """
-    if param == "odd":
+    if param == ODD:
         return list(filter(lambda x: x % 2 == 1, input_list))
-    if param == "even":
+    if param == EVEN:
         return list(filter(lambda x: x % 2 == 0, input_list))
-    if param == "prime":
+    if param == PRIME:
         return list(filter(is_prime, input_list))
