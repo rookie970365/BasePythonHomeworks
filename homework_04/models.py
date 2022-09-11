@@ -17,21 +17,8 @@ DB_ASYNC_URL = "postgresql+asyncpg://username:passwd!@localhost:5432/blog"
 DB_ECHO = False
 
 async_engine: AsyncEngine = create_async_engine(DB_ASYNC_URL, echo=DB_ECHO)
-# async_session = sessionmaker(async_engine, class_=AsyncSession, expire_on_commit=False)
 Session = sessionmaker(async_engine, class_=AsyncSession, expire_on_commit=False)
 Base = declarative_base()
-
-
-# class Base:
-#     @declared_attr
-#     def __tablename__(cls):
-#         return f"{cls.__name__.lower()}s"
-#    id = Column(Integer, primary_key=True)
-#
-#     # def __repr__(self):
-#     #     return str(self)
-#
-# Base = declarative_base(cls=Base)
 
 
 class User(Base):

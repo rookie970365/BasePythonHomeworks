@@ -70,7 +70,6 @@ async def get_posts_by_user(session: AsyncSession, name: str) -> List[Post] | No
 
 async def async_main():
     await create_tables()
-    # async with async_session() as session:
     async with Session() as session:
         users_data, posts_data = await asyncio.gather(
             jsonplaceholder_requests.fetch_users_data(),
