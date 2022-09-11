@@ -1,3 +1,4 @@
+
 ### Домашнее задание "Асинхронная работа с сетью и БД"
 #### Задача:
 - скопируйте папку `homework_04` для этой домашки (Памятка: https://github.com/OtusTeam/BasePython/tree/homeworks-new)
