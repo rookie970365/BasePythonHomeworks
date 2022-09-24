@@ -17,7 +17,7 @@ import asyncio
 from sqlalchemy.ext.asyncio import AsyncSession
 from models import Base, User, Post, async_engine, Session
 import jsonplaceholder_requests
-from typing import List, Iterable, Union
+from typing import List, Iterable
 from sqlalchemy import select
 from sqlalchemy.engine import Result
 
@@ -48,7 +48,7 @@ async def create_posts(session: AsyncSession, posts_data: dict) -> List[Post]:
     return posts
 
 
-async def get_user_by_post(session: AsyncSession, title: str) -> Union[User, None]:
+async def get_user_by_post(session: AsyncSession, title: str) -> User | None:
     stmt = select(User).join(User.posts).where(Post.title == title)
     result: Result = await session.execute(stmt)
     user: User | None = result.scalar_one_or_none()
@@ -56,7 +56,7 @@ async def get_user_by_post(session: AsyncSession, title: str) -> Union[User, Non
     return user
 
 
-async def get_posts_by_user(session: AsyncSession, name: str) -> Union[List[Post], None]:
+async def get_posts_by_user(session: AsyncSession, name: str) -> List[Post] | None:
     stmt = select(Post).join(Post.user).where(User.name == name)
     result: Result = await session.execute(stmt)
     posts: Iterable[Post] = result.scalars()
