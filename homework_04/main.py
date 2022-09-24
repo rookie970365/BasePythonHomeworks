@@ -17,7 +17,7 @@ import asyncio
 from sqlalchemy.ext.asyncio import AsyncSession
 from models import Base, User, Post, async_engine, Session
 import jsonplaceholder_requests
-from typing import List, Iterable
+from typing import List, Iterable, Union
 from sqlalchemy import select
 from sqlalchemy.engine import Result
 
