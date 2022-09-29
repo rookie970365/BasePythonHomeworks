@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    User #{{ user.id }}
+{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/homepage.css') }}">
+    <h1>User #{{ user.id }}
+        <code>{{ user.name }}</code>
+        {% if user.is_new %}
+            <span class="badge bg-secondary">New</span>
+        {% endif %}
+    </h1>
+    <a class="btn btn-sm btn-danger"
+       href="{{ url_for('users_app.confirm-delete', user_id=user.id) }}">
+       Delete user
+    </a>
+
+{% endblock %} %}
+
