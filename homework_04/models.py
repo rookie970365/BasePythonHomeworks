@@ -10,13 +10,13 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Text
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, AsyncEngine
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
+import os
 
-# from sqlalchemy.orm import declared_attr
-
-DB_ASYNC_URL = "postgresql+asyncpg://username:passwd!@localhost:5432/blog"
+PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:password@localhost/postgres"
+# DB_ASYNC_URL = "postgresql+asyncpg://postgres:password@localhost/postgres"
 DB_ECHO = False
 
-async_engine: AsyncEngine = create_async_engine(DB_ASYNC_URL, echo=DB_ECHO)
+async_engine: AsyncEngine = create_async_engine(PG_CONN_URI, echo=DB_ECHO)
 Session = sessionmaker(async_engine, class_=AsyncSession, expire_on_commit=False)
 Base = declarative_base()
 
