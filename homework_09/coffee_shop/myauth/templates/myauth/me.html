@@ -1,0 +1,18 @@
+{% extends 'products/base.html' %}
+
+{% block title %}
+  User info
+{% endblock %}
+
+{% block body %}
+  <h1>Hello {% firstof user.first_name user.email user.username user %}</h1>
+
+  <h3>User info:</h3>
+  <p>
+    {% if user.profile.info %}
+      {{ user.profile.info }}
+    {% else %}
+      <span>¯\_(ツ)_/¯</span>
+    {% endif %}
+  </p>
+{% endblock %}

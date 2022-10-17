@@ -1,0 +1,19 @@
+{% extends 'products/base.html' %}
+
+{%  block title %}
+  Product list
+{%  endblock %}
+
+{% block body %}
+
+  <h2>Hello, these are the new coffee offerings!</h2>
+  <ul class="list-group">
+    {%  for product in products %}
+     <li class="list-group-item">
+       <a href="{% url 'products:details' product.pk %}">
+         {{ product.name.upper }}  [{{ product.kind }}] {{ product.price }}$
+       </a>  Origin: {{ product.origin.all|join:", " }}
+     </li>
+      {% endfor %}
+  </ul>
+{% endblock %}

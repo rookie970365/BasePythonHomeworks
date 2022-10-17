@@ -1,0 +1,42 @@
+{% extends 'products/base.html' %}
+
+{% block title %}
+  {{ product.name }} details
+{% endblock %}
+
+{% block body %}
+  <h1>{{ product.name }}</h1>
+  <div>
+    <strong>Kind:</strong>
+      <a href="{% url 'products:index' %}">{{ product.kind }}</a>
+{#      {{ product.kind }}#}
+  <br>
+    <strong>Origin:</strong>
+      <a href="{% url 'products:index' %}">{{ product.origin.all|join:", " }}</a>
+{#      {{ product.origin.all|join:", "}}#}
+  <br>
+    <p>Price: {{ product.price }}$</p>
+    <p>Description: {{ product.description }}</p>
+  </div>
+  <div>
+    <h3>Profile</h3>
+      <div class="row">
+        <div class="col">
+          <strong> degree of roast: </strong>
+        </div>
+        <div class="col">
+          {{ product.profile.degree_of_roast }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <strong> Recommended coffee preparation method: </strong>
+        </div>
+        <div class="col">
+          {{ product.profile.preparation_method }}
+        </div>
+      </div>
+  </div>
+  <br>
+  <a href="{% url 'products:index' %}">Back to products list</a>
+{% endblock %}
